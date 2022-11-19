@@ -25,9 +25,9 @@ public class EmailApplication {
         this.dep = setDepartment();
 
         this.password = passwordGenerator(defaultPasswordLength);
-            System.out.println("Password: " + this.password);
+        System.out.println("Password: " + this.password);
 
-            email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + dep + "." + companySuffix;
+        email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + dep + "." + companySuffix;
     }
 
     private String setDepartment() {
@@ -37,34 +37,34 @@ public class EmailApplication {
         if (depChoice == 1) { return "sales"; }
         else if (depChoice == 2) { return "accounting"; }
         else if (depChoice == 3) { return "development"; }
-                else { return ""; }
-        }
+        else { return ""; }
+    }
 
-        private String passwordGenerator(int length) {
-            String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
-            char[] password = new char[length];
-            for (int i = 0; i < length; i++){
-                int rand = (int) (Math.random() * passwordSet.length());
-                password[i] = passwordSet.charAt(rand);
-            }
-            return new String(password);
+    private String passwordGenerator(int length) {
+        String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
+        char[] password = new char[length];
+        for (int i = 0; i < length; i++){
+            int rand = (int) (Math.random() * passwordSet.length());
+            password[i] = passwordSet.charAt(rand);
         }
-        public void setMailboxCapacity(int capacity) {
-            this.mailboxCap = capacity;
-        }
-        public void setAlternativeEmail(String altEmail) {
-            this.emailAlt = altEmail;
-        }
-        public void changePassword(String password) {
-            this.password = password;
-        }
-        public int getMailboxCapacity() { return mailboxCap; }
-        public String getAlternativeEmail() { return emailAlt; }
-        public String getPassword() { return password; }
+        return new String(password);
+    }
+    public void setMailboxCapacity(int capacity) {
+        this.mailboxCap = capacity;
+    }
+    public void setAlternativeEmail(String altEmail) {
+        this.emailAlt = altEmail;
+    }
+    public void changePassword(String password) {
+        this.password = password;
+    }
+    public int getMailboxCapacity() { return mailboxCap; }
+    public String getAlternativeEmail() { return emailAlt; }
+    public String getPassword() { return password; }
 
-        public String showInfo() {
-            return "Display Name: " + firstName + " " + lastName +
-                    "\nCompany Email: " + email +
-                    "\nMailbox Capacity: " + mailboxCap + "Mb";
-        }
+    public String showInfo() {
+        return "Display Name: " + firstName + " " + lastName +
+                "\nCompany Email: " + email +
+                "\nMailbox Capacity: " + mailboxCap + "Mb";
+    }
 }
