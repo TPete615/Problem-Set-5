@@ -31,7 +31,7 @@ public class EmailApplication {
     }
 
     private String setDepartment() {
-        System.out.println("Email created: " + firstName + " " + lastName + "\nDepartment Codes:\n1 for Sales\n2 for Accounting\n3 for Development\n0 for none\nEnter your department code: ");
+        System.out.println("New worker: " + firstName + " " + lastName + "\nDepartment Codes:\n1 for Sales\n2 for Accounting\n3 for Development\n0 for none\nEnter your department code: ");
         Scanner in = new Scanner(System.in);
         int depChoice = in.nextInt();
         if (depChoice == 1) { return "sales"; }
