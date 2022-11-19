@@ -1,3 +1,10 @@
+/**********************************************************************
+ * @file EmailApplication.java
+ * @brief None.
+ * @author Nick Kozlov
+ * @date: 11/18/22
+ * @acknowledgement: N/A
+ ***********************************************************************/
 import java.util.Scanner;
 import java.lang.Math.*;
 public class EmailApplication {
