@@ -58,6 +58,6 @@ public class EmailApplication {
         public String showInfo() {
             return "Display Name: " + firstName + " " + lastName +
                     "\nCompany Email: " + email +
-                    "\nMailbox Capacity: " + mailboxCap + "mb";
+                    "\nMailbox Capacity: " + mailboxCap + "Mb";
         }
 }
