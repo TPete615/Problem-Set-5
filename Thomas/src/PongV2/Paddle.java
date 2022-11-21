@@ -1,10 +1,11 @@
 package PongV2;
 
-import java.awt.Graphics;
+import java.awt.*;
 
-public interface Paddle {
+public interface Paddle{
     public void draw(Graphics g);
     public void move();
     public int getY();
+
 }
 
