@@ -13,54 +13,51 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
     final int WIDTH = 700, HEIGHT = 500;
     Thread thread;
     HumanPaddle p1;
-    AIPaddle p2;
     Ball b1;
-    boolean gameStarted;
+    AIPaddle p2;
+    boolean gameStart;
     Graphics gfx;
     Image img;
-
-    public void Tennis() {
+    public Tennis() {
         this.setSize(WIDTH, HEIGHT);
-        gameStarted = false;
+        gameStart=false;
         this.addKeyListener(this);
-        p1 = new HumanPaddle(1);
+        this.setTitle("Pong Game");
+        this.setVisible(true);
         b1 = new Ball();
+        p1 = new HumanPaddle(1);
         p2 = new AIPaddle(2, b1);
-        img = createImage(WIDTH, HEIGHT);
+        img = createImage(WIDTH,HEIGHT);
         gfx = img.getGraphics();
         thread = new Thread(this);
         thread.start();
     }
-
     public void paint(Graphics g) {
-
         gfx.setColor(Color.black);
         gfx.fillRect(0, 0, WIDTH, HEIGHT);
         if (b1.getX() < -10 || b1.getX() > 710) {
             gfx.setColor(Color.red);
             gfx.drawString("Game Over", 350, 250);
-        } else {
+        }
+        else {
             p1.draw(gfx);
             b1.draw(gfx);
             p2.draw(gfx);
         }
-
-        if (!gameStarted) {
+        if (!gameStart){
             gfx.setColor(Color.white);
             gfx.drawString("Tennis",340,100);
-            gfx.drawString("Press Enter to Begin..", 310, 130);
+            gfx.drawString("Press enter to begin . .", 310,130);
         }
-        g.drawImage(img, 0, 0, this);
+        g.drawImage(img,0,0,this);
     }
-
-    public void update(Graphics g) {
+    public void updates(Graphics g){
         paint(g);
-
     }
+    public void run(){
+        for(;;){
 
-    public void run() {
-        for (; ; ) {
-            if(gameStarted) {
+            if (gameStart) {
                 p1.move();
                 p2.move();
                 b1.move();
@@ -69,30 +66,30 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
             repaint();
             try {
                 Thread.sleep(10);
-            } catch (InterruptedException e) {
+            }catch (InterruptedException e){
                 e.printStackTrace();
             }
         }
     }
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
 
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
+    public void keyPressed(KeyEvent e){
+        if (e.getKeyCode() ==KeyEvent.VK_UP){
             p1.setUpAccel(true);
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        }
+        else if(e.getKeyCode() ==KeyEvent.VK_DOWN){
             p1.setDownAccel(true);
         }
     }
-
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             p1.setUpAccel(false);
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             p1.setDownAccel(false);
         } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            gameStarted = true;
+            gameStart = true;
         }
+    }
+    public void keyTyped(KeyEvent arg0){
+
     }
 }
