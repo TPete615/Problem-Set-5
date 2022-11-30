@@ -15,6 +15,7 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
     HumanPaddle p1;
     Ball b1;
     AIPaddle p2;
+    Scorecard scorecard;
     boolean gameStart;
     Graphics gfx;
     Image img;
@@ -27,6 +28,7 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
         b1 = new Ball();
         p1 = new HumanPaddle(1);
         p2 = new AIPaddle(2, b1);
+        scorecard = new Scorecard();
         img = createImage(WIDTH,HEIGHT);
         gfx = img.getGraphics();
         thread = new Thread(this);
@@ -43,6 +45,7 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
             p1.draw(gfx);
             b1.draw(gfx);
             p2.draw(gfx);
+            scorecard.draw(gfx);
         }
         if (!gameStart){
             gfx.setColor(Color.white);
@@ -61,7 +64,7 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
                 p1.move();
                 p2.move();
                 b1.move();
-                b1.checkPaddleCollision(p1, p2);
+                b1.checkPaddleCollision(p1, p2, scorecard);
             }
             repaint();
             try {
