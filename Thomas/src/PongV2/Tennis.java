@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Scanner;
 
 public class Tennis extends JFrame implements Runnable, KeyListener {
     public static void main(String[] args) {
@@ -37,6 +38,11 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
     public void paint(Graphics g) {
         gfx.setColor(Color.black);
         gfx.fillRect(0, 0, WIDTH, HEIGHT);
+        private void playAgain() {
+            Scanner sc = new Scanner(System.in);
+            gfx.setColor(Color.black);
+            System.out.print("Play Again?: (Y or N)");
+        }
         if (b1.getX() < -10 || b1.getX() > 710) {
             gfx.setColor(Color.red);
             gfx.drawString("Game Over", 350, 250);
