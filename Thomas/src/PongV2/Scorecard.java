@@ -31,11 +31,9 @@ public class Scorecard {
     public int getHighScore() {
         return this.highScore;
     }
-    public void setHighScore(int score) {
-        getScore();
-        setScore(score);
-        if (score > highScore) {
-            this.highScore = score;
+    public void setHighScore(int prevScore) {
+        if (prevScore > highScore) {
+            this.highScore = prevScore;
         }
     }
     public void drawHighScore(Graphics g) {
