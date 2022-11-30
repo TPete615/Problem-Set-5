@@ -36,16 +36,12 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
         thread.start();
     }
     public void paint(Graphics g) {
-        String play;
         gfx.setColor(Color.black);
         gfx.fillRect(0, 0, WIDTH, HEIGHT);
         if (b1.getX() < -10 || b1.getX() > 710) {
-            Scanner sc = new Scanner(System.in);
-            gfx.setColor(Color.blue);
-            gfx.drawString("Play Again?: (Y or N)",350,250);
-            play = sc.nextLine();
             gfx.setColor(Color.red);
             gfx.drawString("Game Over", 350, 250);
+            scorecard.scoreReset(0);
         }
         else {
             p1.draw(gfx);

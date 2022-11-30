@@ -1,7 +1,6 @@
 package PongV2;
 
 import java.awt.*;
-import java.util.Scanner;
 
 public class Scorecard {
     private int score = 0;
@@ -12,6 +11,10 @@ public class Scorecard {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public void setScore2(int score) {
+        this.score = 0;
     }
 
     public void incrementScore() {
@@ -39,6 +42,11 @@ public class Scorecard {
         getHighScore();
         setHighScore(score);
         g.drawString("High Score: " + highScore, 300, 400);
+    }
+    public int scoreReset(int score) {
+        setScore2(score);
+        getScore();
+        return score;
     }
 
 }
