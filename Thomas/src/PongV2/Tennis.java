@@ -1,7 +1,7 @@
 /**********************************************************************
  * @file Tennis.java
  *
- *.
+ *
  * @author Sam Rausch, Thomas Peterson, Quincy Williams, Nick Kozlov
  * @date: 11/30/22
  * @acknowledgement: Classwork

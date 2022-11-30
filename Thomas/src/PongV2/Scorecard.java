@@ -12,15 +12,12 @@ public class Scorecard {
     public void setScore(int score) {
         this.score = score;
     }
-
-    public void setScore2(int score) {
+    public void setNewScore(int score) {
         this.score = 0;
     }
-
     public void incrementScore() {
         this.score += 1;
     }
-
     public void draw(Graphics g) {
         g.setColor(Color.white);
         g.drawString("Score: " + score, 300, 100);
@@ -42,7 +39,7 @@ public class Scorecard {
         g.drawString("High Score: " + highScore, 300, 400);
     }
     public int scoreReset(int score) {
-        setScore2(score);
+        setNewScore(score);
         getScore();
         return score;
     }
