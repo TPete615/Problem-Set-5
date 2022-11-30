@@ -23,13 +23,8 @@ public class Scorecard {
         g.drawString("Score: " + score, 300, 100);
     }
     private int highScore = 0;
-    private int prevScore = 0;
-    public int getPrevScore() {
-        return this.prevScore;
-    }
-    public void setPrevScore() {
-        this.prevScore = score;
-    }
+
+
     public int getHighScore() {
         return this.highScore;
     }
@@ -41,6 +36,8 @@ public class Scorecard {
         }
     }
     public void drawHighScore(Graphics g) {
+        getHighScore();
+        setHighScore(score);
         g.drawString("High Score: " + highScore, 300, 400);
     }
 
