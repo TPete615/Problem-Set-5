@@ -1,6 +1,7 @@
 package PongV2;
 
 import java.awt.*;
+import java.util.Scanner;
 
 public class Ball {
     double xVel, yVel, x, y;
