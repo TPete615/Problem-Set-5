@@ -13,7 +13,7 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
         char s, m;
         long start,end;
         double t1;
-        System.out.println("Choose Character (CPU or Player 1): ");
+        System.out.println("Choose your Character ** CPU or Player 1 **: ");
         s =sc.next().charAt(0);
         start=System.currentTimeMillis();
         System.out.println("Type any letter or number to start the game: ");
