@@ -17,13 +17,14 @@ public class Scorecard {
     private int prevScore = score;
     private int highScore = 0;
     public void draw(Graphics g){
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.drawString("Score: " + score, 300, 200);
         if(prevScore > highScore) {
             highScore = prevScore;
             g.drawString("High Score: " + highScore, 300, 100);
         }
         else if(highScore >= prevScore) {
+            highScore = highScore;
             g.drawString("High Score: " + highScore, 300, 100);
         }
     }

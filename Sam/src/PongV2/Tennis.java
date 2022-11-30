@@ -1,12 +1,26 @@
 package PongV2;
 
+import java.util.Scanner;
 import javax.swing.*;
+import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Tennis extends JFrame implements Runnable, KeyListener {
     public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        char s, m;
+        long start,end;
+        double t1;
+        System.out.println("Choose Character (CPU or Player 1): ");
+        s =sc.next().charAt(0);
+        start=System.currentTimeMillis();
+        System.out.println("Type any letter or number to start the game: ");
+        m =sc.next().charAt(0);
+        end=System.currentTimeMillis();
+        t1=(end-start)/1000.0;
+        System.out.println(t1);
         Tennis game = new Tennis();
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
