@@ -24,20 +24,24 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
     Thread thread;
     HumanPaddle p1;
     Ball b1;
-    AIPaddle p2;
+    HumanPaddle p2;
+    AIPaddle p3;
     Scorecard scorecard;
     boolean gameStart;
+    boolean twoPlayerStart;
     Graphics gfx;
     Image img;
     public Tennis() {
         this.setSize(WIDTH, HEIGHT);
         gameStart=false;
+        twoPlayerStart=false;
         this.addKeyListener(this);
         this.setTitle("Pong Game");
         this.setVisible(true);
         b1 = new Ball();
         p1 = new HumanPaddle(1);
-        p2 = new AIPaddle(2, b1);
+        p2 = new HumanPaddle(2);
+        p3 = new AIPaddle(3, b1);
         scorecard = new Scorecard();
         img = createImage(WIDTH,HEIGHT);
         gfx = img.getGraphics();
@@ -49,20 +53,24 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
         gfx.fillRect(0, 0, WIDTH, HEIGHT);
         if (b1.getX() < -10 || b1.getX() > 710) {
             gfx.setColor(Color.red);
-            gfx.drawString("Game Over", 350, 250);
+            gfx.drawString("Game Over", 300, 280);
             scorecard.scoreReset(0);
         }
         else {
+            p3.draw(gfx);
             p1.draw(gfx);
-            b1.draw(gfx);
             p2.draw(gfx);
+            b1.draw(gfx);
             scorecard.draw(gfx);
             scorecard.drawHighScore(gfx);
         }
-        if (!gameStart){
+        if (!gameStart && !twoPlayerStart){
             gfx.setColor(Color.white);
-            gfx.drawString("Tennis",340,200);
-            gfx.drawString("Press enter to begin . .", 310,230);
+            gfx.setFont(new Font("Arial", Font.BOLD, 50));
+            gfx.drawString("Tennis",270,200);
+            gfx.setFont(new Font("Arial", Font.PLAIN, 20));
+            gfx.drawString("Press enter for 1 player", 250,300);
+            gfx.drawString("Press space for 2 players", 250,320);
         }
         g.drawImage(img,0,0,this);
     }
@@ -71,8 +79,13 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
     }
     public void run(){
         for(;;){
-
             if (gameStart) {
+                p1.move();
+                p3.move();
+                b1.move();
+                b1.checkPaddleCollision(p1, p3, scorecard);
+            }
+            else if(twoPlayerStart){
                 p1.move();
                 p2.move();
                 b1.move();
@@ -93,6 +106,11 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
         }
         else if(e.getKeyCode() ==KeyEvent.VK_DOWN){
             p1.setDownAccel(true);
+        }if (e.getKeyCode() ==KeyEvent.VK_W){
+            p2.setUpAccel(true);
+        }
+        else if(e.getKeyCode() ==KeyEvent.VK_S){
+            p2.setDownAccel(true);
         }
     }
     public void keyReleased(KeyEvent e) {
@@ -100,8 +118,14 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
             p1.setUpAccel(false);
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             p1.setDownAccel(false);
+        }if (e.getKeyCode() == KeyEvent.VK_W) {
+                p2.setUpAccel(false);
+        } else if (e.getKeyCode() == KeyEvent.VK_S) {
+                p2.setDownAccel(false);
         } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             gameStart = true;
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE){
+            twoPlayerStart=true;
         }
     }
     public void keyTyped(KeyEvent arg0){

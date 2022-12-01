@@ -6,11 +6,12 @@ public class HumanPaddle implements Paddle{
     double y, yVel;
     boolean upAccel, downAccel;
     final double GRAVITY=0.94;
-    int player, x;
+    int players, x;
 
     public HumanPaddle(int player){
         upAccel=false; downAccel=false;
         y=210;yVel=0;
+        players=player;
         if(player==1){
             x=20;
         } else {
@@ -19,7 +20,15 @@ public class HumanPaddle implements Paddle{
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.white);
+        if(players==1) {
+            g.setColor(Color.red);
+        }
+        else if (players==0){
+            g.setColor(Color.black);
+        }
+        else if (players==2){
+            g.setColor(Color.blue);
+        }
         g.fillRect(x,(int)y,20,80);
 
     }
