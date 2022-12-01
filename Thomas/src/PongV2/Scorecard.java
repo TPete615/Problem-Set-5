@@ -4,13 +4,11 @@ import java.awt.*;
 
 public class Scorecard {
     private int score = 0;
-
+    public void defaultScore(int score) {
+        this.score = score;
+    }
     public int getScore() {
         return this.score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
     }
     public void setNewScore(int score) {
         this.score = 0;
@@ -24,7 +22,6 @@ public class Scorecard {
     }
     private int highScore = 0;
 
-
     public int getHighScore() {
         return this.highScore;
     }
@@ -33,6 +30,7 @@ public class Scorecard {
             this.highScore = prevScore;
         }
     }
+
     public void drawHighScore(Graphics g) {
         getHighScore();
         setHighScore(score);
