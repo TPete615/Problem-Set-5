@@ -1,4 +1,11 @@
 package PongV2;
+/*@file PongV2 & Thomas's Pong V2
+3 *@brief I created the ability for two players to play, but I could not figure out how to make one of the paddles disappear
+when choosing to play another mode.
+4 *@author Quincy Williams
+5 *@date : 12-1-2022
+6 *@acknowledgement : Nick, Sam, Thomas
+ */
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,10 +30,13 @@ final int WIDTH = 700, HEIGHT = 500;
         gameStart=false;
         this.addKeyListener(this);
         this.setTitle("Pong Game");
-        this.setVisible(true);
+
         b1 = new Ball();
         p1 = new HumanPaddle(1);
         p2 = new AIPaddle(2, b1);
+
+
+        this.setVisible(true);
         img = createImage(WIDTH,HEIGHT);
         gfx = img.getGraphics();
         thread = new Thread(this);
