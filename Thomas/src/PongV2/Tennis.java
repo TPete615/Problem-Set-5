@@ -50,6 +50,7 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
         if (b1.getX() < -10 || b1.getX() > 710) {
             gfx.setColor(Color.red);
             gfx.drawString("Game Over", 350, 250);
+            scorecard.scoreReset(0);
         }
         else {
             p1.draw(gfx);
@@ -107,4 +108,3 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
 
     }
 }
-
