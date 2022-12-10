@@ -55,7 +55,6 @@ public class Tennis extends JFrame implements Runnable, KeyListener {
             play = sc.nextLine();
             gfx.setColor(Color.red);
             gfx.drawString("Game Over", 350, 250);
-            scorecard.scoreReset(0);
         }
         else {
             p1.draw(gfx);

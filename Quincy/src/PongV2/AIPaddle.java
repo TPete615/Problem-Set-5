@@ -22,7 +22,7 @@ public class AIPaddle implements Paddle {
 
         public void draw(Graphics g) {
             g.setColor(Color.white);
-            g.fillRect(x,(int)y,20,80);
+            g.fillRect(x-20,(int)y,20,80);
 
         }
         public void move() {
